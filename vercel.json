@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/callback",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  

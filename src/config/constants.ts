@@ -3,7 +3,7 @@ export const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY || '';
 
 // Determine the base URL based on environment
 const BASE_URL = import.meta.env.PROD 
-  ? 'https://swapify.umoru.tech'
+  ? 'https://tune-bridge.umoru.tech'
   : 'http://localhost:5173';
 
 export const SPOTIFY_REDIRECT_URI = `${BASE_URL}/callback`;

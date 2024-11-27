@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header } from './components/Header';
-import { PlaylistConverter } from './components/PlaylistConverter';
-import { CallbackHandler } from './components/CallbackHandler';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Header } from "./components/Header";
+import { PlaylistConverter } from "./components/PlaylistConverter";
+import { CallbackHandler } from "./components/CallbackHandler";
 
 function App() {
   return (
@@ -12,10 +12,10 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Convert Your Playlists
+              YouTube to Spotify Playlist Converter
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Transform your YouTube playlists into Spotify playlists in seconds
+            Seamlessly convert your playlists from to YouTube to Spotify in seconds
             </p>
           </div>
           <Routes>

@@ -82,7 +82,7 @@ export function PlaylistConverter() {
   if (!spotifyToken) {
     return (
       <div className="text-center">
-        <p className="mb-4 text-gray-600">Connect your Spotify account to start converting playlists</p>
+        <p className="mb-4 text-gray-600">Connect your Spotify account to start</p>
         <SpotifyLogin />
       </div>
     );

@@ -15,13 +15,17 @@ function App() {
               YouTube to Spotify Playlist Converter
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-            Seamlessly convert your playlists from to YouTube to Spotify in seconds
+              Seamlessly convert your playlists from to YouTube to Spotify in
+              seconds
             </p>
           </div>
           <Routes>
             <Route path="/callback" element={<CallbackHandler />} />
             <Route path="/" element={<PlaylistConverter />} />
           </Routes>
+          <div className="flex justify-center items-center pt-20">
+            <img src="/images/4oMoIbIQrvCjm.webp" alt="giphy" />
+          </div>
         </main>
       </div>
     </Router>

@@ -40,9 +40,9 @@ To set up the project locally, follow these steps:
 ## Usage
 
 1. Open the web application in your browser.
-2. Enter the URL of your YouTube playlist.
-3. Click on the "Convert" button.
-4. Follow the instructions to log in to your Spotify account and authorize the application.
+2. Follow the instructions to log in to your Spotify account and authorize the application.
+3. Enter the URL of your YouTube playlist.
+4. Click on the "Convert" button.
 5. Your playlist will be converted and added to your Spotify account.
 
 ## Contributing

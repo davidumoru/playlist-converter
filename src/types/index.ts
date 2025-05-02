@@ -23,3 +23,24 @@ export interface SpotifyPlaylist {
   name: string;
   tracks: SpotifyTrack[];
 }
+
+export interface ConversionResult {
+  totalTracks: number;
+  matchedTracks: number;
+  playlistId: string | null;
+  playlistUrl: string | null;
+}
+
+export interface ApiError {
+  message: string;
+  code?: string;
+  status?: number;
+}
+
+export type ConversionStatus =
+  | "idle"
+  | "fetching-youtube"
+  | "searching-spotify"
+  | "creating-playlist"
+  | "completed"
+  | "error";

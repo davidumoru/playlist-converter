@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { PlaylistConverter } from "./components/PlaylistConverter";
@@ -15,7 +14,7 @@ function App() {
               YouTube to Spotify Playlist Converter
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Seamlessly convert your playlists from to YouTube to Spotify in
+              Seamlessly convert your playlists from YouTube to Spotify in
               seconds
             </p>
           </div>

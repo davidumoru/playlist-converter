@@ -6,10 +6,6 @@ Convert your YouTube music playlists to Spotify.
 
 This project allows users to convert their YouTube music playlists into Spotify playlists. It provides a web interface to input YouTube playlist URLs and export them to Spotify.
 
-## Homepage
-
-[Visit the project homepage](https://tune-bridge.umoru.tech/)
-
 ## Features
 
 - Convert YouTube playlists to Spotify
@@ -67,7 +63,3 @@ Contributions are welcome! Please follow these steps to contribute:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [davidumoru](https://github.com/davidumoru) for creating and maintaining this project.

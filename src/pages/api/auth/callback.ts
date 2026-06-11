@@ -16,5 +16,5 @@ export const GET: APIRoute = async ({ cookies, url, redirect }) => {
 
   const tokens = await exchangeCode(url.origin, code);
   storeTokens(cookies, tokens);
-  return redirect("/", 302);
+  return redirect("/?connected=1", 302);
 };

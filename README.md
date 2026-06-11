@@ -1,6 +1,6 @@
-# playlist-converter
+# Crossfade
 
-Convert a YouTube playlist into a Spotify playlist.
+Move a playlist from YouTube to Spotify.
 
 Built with Astro. All third-party API calls happen in server endpoints, so the
 YouTube API key and Spotify credentials never reach the browser. Spotify auth
@@ -12,8 +12,10 @@ uses the authorization-code flow with tokens stored in httpOnly cookies.
    - `YOUTUBE_API_KEY` — from the Google Cloud console (YouTube Data API v3)
    - `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` — from the
      [Spotify developer dashboard](https://developer.spotify.com/dashboard)
-2. In the Spotify app settings, add `http://localhost:4321/api/auth/callback`
-   (and your production origin's equivalent) to the redirect URIs.
+2. In the Spotify app settings, add `http://127.0.0.1:4321/api/auth/callback`
+   (and your production origin's equivalent) to the redirect URIs. Spotify no
+   longer accepts `localhost` — use the IP form, and open the dev site at
+   `http://127.0.0.1:4321` so the derived redirect URI matches.
 3. `pnpm install && pnpm dev`
 
 ## How it works
@@ -34,7 +36,11 @@ Auth endpoints: `/api/auth/login`, `/api/auth/callback`, `/api/auth/logout`,
 
 ```text
 src/
+├── components/
+│   └── Converter.svelte      # the whole UI (Svelte island)
 ├── lib/
+│   ├── client/
+│   │   └── converter.svelte.ts  # client-side conversion state machine
 │   ├── youtube.ts    # YouTube Data API client (server-only)
 │   ├── spotify.ts    # Spotify OAuth + Web API client (server-only)
 │   ├── session.ts    # token cookies + transparent refresh

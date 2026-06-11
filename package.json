@@ -1,5 +1,5 @@
 {
-  "name": "srcs",
+  "name": "playlist-converter",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^10.0.8",
     "astro": "^6.4.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }

@@ -172,6 +172,9 @@
       <a href="https://github.com/davidumoru/crossfade" target="_blank" rel="noopener">source</a>
       <a href="https://x.com/theumoru" target="_blank" rel="noopener">x</a>
       <a href="https://buymeacoffee.com/theumoru" target="_blank" rel="noopener">buy me a coffee</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="/terms">terms</a>
+      <a href="/privacy">privacy</a>
     </nav>
   </footer>
 </div>
@@ -454,7 +457,14 @@
 
   footer nav {
     display: flex;
+    align-items: center;
     gap: 1.25rem;
+  }
+
+  footer .sep {
+    width: 1px;
+    height: 0.85em;
+    background: var(--rule);
   }
 
   footer a {

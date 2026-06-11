@@ -1,0 +1,75 @@
+---
+import Legal from "../layouts/Legal.astro";
+---
+
+<Legal title="Privacy Policy" updated="June 11, 2026">
+  <p>
+    Crossfade is a small tool that copies a public YouTube playlist to your
+    Spotify account. It is designed to know as little about you as possible.
+    This page explains exactly what it touches and what it doesn't.
+  </p>
+
+  <h2>What Crossfade accesses</h2>
+  <ul>
+    <li>
+      <strong>YouTube:</strong> the title and track list of the public
+      playlist you paste. Nothing about your YouTube or Google account.
+    </li>
+    <li>
+      <strong>Spotify:</strong> after you connect your account, Crossfade can
+      search the Spotify catalogue and create playlists on your behalf. That
+      is the full extent of the permissions it requests.
+    </li>
+  </ul>
+
+  <h2>What Crossfade stores</h2>
+  <p>
+    Nothing, server-side. There is no database, no user accounts, and no
+    analytics. The only data kept anywhere is in your own browser:
+  </p>
+  <ul>
+    <li>
+      Spotify authentication tokens, stored as secure httpOnly cookies — an
+      access token that expires within an hour, and a refresh token kept for
+      up to 30 days so you don't have to reconnect each visit.
+    </li>
+    <li>
+      The playlist URL you pasted, kept briefly in your browser's session
+      storage so it survives the redirect through Spotify's login page.
+    </li>
+  </ul>
+  <p>
+    Playlist data passes through the server only for the duration of each
+    request and is never written down. Your data is never sold, shared, or
+    used for anything beyond performing the conversion you asked for.
+  </p>
+
+  <h2>Disconnecting</h2>
+  <p>
+    Click <em>disconnect</em> in the header at any time — this deletes the
+    authentication cookies from your browser. To fully revoke Crossfade's
+    access to your Spotify account, you can also remove it at
+    <a href="https://www.spotify.com/account/apps/" target="_blank" rel="noopener">
+      spotify.com/account/apps</a>.
+  </p>
+
+  <h2>Third-party services</h2>
+  <p>
+    Crossfade uses YouTube API Services and the Spotify Web API. By using it
+    you also agree to the
+    <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">
+      YouTube Terms of Service</a>; the
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+      Google Privacy Policy</a>
+    and
+    <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener">
+      Spotify Privacy Policy</a>
+    apply to data those services process. Fonts are served by Google Fonts.
+  </p>
+
+  <h2>Changes &amp; contact</h2>
+  <p>
+    If this policy changes, the date above will be updated. Questions:
+    <a href="mailto:hey@davidumoru.me">hey@davidumoru.me</a>.
+  </p>
+</Legal>

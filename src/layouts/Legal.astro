@@ -1,0 +1,164 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  updated: string;
+}
+
+const { title, updated } = Astro.props;
+---
+
+<Layout title={`${title} — Crossfade`}>
+  <fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..620;1,9..144,300..620&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap"
+      rel="stylesheet"
+    />
+  </fragment>
+  <div class="legal">
+    <header>
+      <a class="brand" href="/">Crossfade</a>
+      <a class="back" href="/">← back to the app</a>
+    </header>
+    <main>
+      <h1>{title}</h1>
+      <p class="updated">Last updated {updated}</p>
+      <slot />
+    </main>
+    <footer>
+      <span>A small tool for moving music between places.</span>
+      <nav>
+        <a href="https://github.com/davidumoru/crossfade" target="_blank" rel="noopener">source</a>
+        <a href="https://x.com/theumoru" target="_blank" rel="noopener">x</a>
+        <a href="https://buymeacoffee.com/theumoru" target="_blank" rel="noopener">buy me a coffee</a>
+        <span class="sep" aria-hidden="true"></span>
+        <a href="/terms">terms</a>
+        <a href="/privacy">privacy</a>
+      </nav>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  .legal {
+    --paper: #f6f3ec;
+    --ink: #211d18;
+    --faint: #797162;
+    --rule: #d9d2c3;
+    --green: #2f6b4f;
+
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .legal header,
+  .legal footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+  }
+
+  .legal .brand {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .legal main {
+    width: min(38rem, calc(100% - 3rem));
+    margin: 0 auto;
+    flex: 1;
+    padding: 2rem 0 4rem;
+  }
+
+  .legal h1 {
+    font-family: "Fraunces", serif;
+    font-size: 2.2rem;
+    font-weight: 420;
+    line-height: 1.1;
+    margin: 0 0 0.5rem;
+  }
+
+  .legal .updated {
+    color: var(--faint);
+    font-style: italic;
+    margin: 0 0 2.5rem;
+  }
+
+  .legal h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 2.2rem 0 0.6rem;
+  }
+
+  .legal p,
+  .legal li {
+    margin: 0 0 0.9rem;
+  }
+
+  .legal ul {
+    padding-left: 1.2rem;
+  }
+
+  .legal a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .legal header .back {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .legal header .back:hover {
+    color: var(--ink);
+  }
+
+  .legal footer {
+    border-top: 1px solid var(--rule);
+    color: var(--faint);
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+
+  .legal footer nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .legal footer .sep {
+    width: 1px;
+    height: 0.85em;
+    background: var(--rule);
+  }
+
+  .legal footer a {
+    color: var(--faint);
+  }
+
+  .legal footer a:hover {
+    color: var(--ink);
+  }
+</style>

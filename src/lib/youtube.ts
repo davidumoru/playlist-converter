@@ -64,7 +64,9 @@ export async function fetchPlaylist(
   }
 
   const tracks: YouTubeTrack[] = [];
+  const seen = new Set<string>();
   let pageToken: string | undefined;
+  let pages = 0;
 
   do {
     const page = (await youtubeGet("playlistItems", {
@@ -74,17 +76,24 @@ export async function fetchPlaylist(
       ...(pageToken ? { pageToken } : {}),
     })) as PlaylistItemsResponse;
 
+    let added = 0;
     for (const item of page.items ?? []) {
       if (UNAVAILABLE_TITLES.has(item.snippet.title)) continue;
+      if (seen.has(item.contentDetails.videoId)) continue;
+      seen.add(item.contentDetails.videoId);
       tracks.push({
         videoId: item.contentDetails.videoId,
         title: item.snippet.title,
         channelTitle: item.snippet.videoOwnerChannelTitle ?? "",
       });
+      added++;
     }
 
+    // Auto-generated radio playlists (RD…) return a nextPageToken forever,
+    // recycling the same videos — stop once a page adds nothing new.
+    if (added === 0) break;
     pageToken = page.nextPageToken;
-  } while (pageToken);
+  } while (pageToken && ++pages < 100);
 
   return { id: playlistId, title: playlistSnippet.title, tracks };
 }

@@ -21,7 +21,16 @@
 
 <div class="page">
   <header>
-    <span class="brand">Crossfade</span>
+    <a
+      href="/"
+      class="brand"
+      onclick={(e) => {
+        e.preventDefault();
+        c.reset();
+      }}
+    >
+      Crossfade
+    </a>
     {#if c.authenticated === true}
       <button class="text-btn" onclick={() => c.logout()}>
         Spotify connected · disconnect
@@ -157,7 +166,14 @@
     {/if}
   </main>
 
-  <footer>A small tool for moving music between places.</footer>
+  <footer>
+    <span>A small tool for moving music between places.</span>
+    <nav>
+      <a href="https://github.com/davidumoru/crossfade" target="_blank" rel="noopener">source</a>
+      <a href="https://x.com/theumoru" target="_blank" rel="noopener">x</a>
+      <a href="https://buymeacoffee.com/theumoru" target="_blank" rel="noopener">buy me a coffee</a>
+    </nav>
+  </footer>
 </div>
 
 <style>
@@ -193,6 +209,10 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-size: 0.8rem;
+    color: inherit;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   main {
@@ -428,5 +448,22 @@
     font-style: italic;
     font-size: 0.85rem;
     border-top: 1px solid var(--rule);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  footer nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  footer a {
+    color: var(--faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  footer a:hover {
+    color: var(--ink);
   }
 </style>

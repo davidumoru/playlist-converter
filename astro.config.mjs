@@ -6,6 +6,7 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://crossfade.davidumoru.me",
   adapter: vercel(),
 
   // Spotify only accepts loopback-IP redirect URIs, so dev must serve on IPv4.

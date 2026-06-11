@@ -2,9 +2,7 @@
 
 Move a playlist from YouTube to Spotify.
 
-Built with Astro. All third-party API calls happen in server endpoints, so the
-YouTube API key and Spotify credentials never reach the browser. Spotify auth
-uses the authorization-code flow with tokens stored in httpOnly cookies.
+![Crossfade home screenshot](/public/home.jpeg)
 
 ## Setup
 

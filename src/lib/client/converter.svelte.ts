@@ -22,7 +22,7 @@ export interface TrackRow {
 }
 
 // Survives the full-page redirect through Spotify's login.
-const STORAGE_KEY = "converter:last-url";
+const STORAGE_KEY = "converter:resume";
 
 const CONCURRENCY = 3;
 
@@ -45,7 +45,7 @@ export class Converter {
   async init(): Promise<void> {
     const params = new URLSearchParams(location.search);
     if (params.has("connected") || params.has("auth_error")) {
-      this.lastInput = sessionStorage.getItem(STORAGE_KEY) ?? "";
+      this.restore();
       if (params.has("auth_error")) {
         this.error = "Spotify connection didn't complete — try again";
       }
@@ -68,7 +68,7 @@ export class Converter {
   async load(input: string): Promise<void> {
     this.error = null;
     this.phase = "fetching";
-    sessionStorage.setItem(STORAGE_KEY, input);
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ input }));
     try {
       const res = await fetch(
         `/api/youtube/playlist?url=${encodeURIComponent(input)}`,
@@ -76,17 +76,42 @@ export class Converter {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       this.playlist = data as YouTubePlaylist;
-      this.rows = this.playlist.tracks.map((track) => ({
-        track,
-        status: "pending",
-        match: null,
-        included: true,
-      }));
+      this.rows = this.rowsFor(this.playlist);
+      sessionStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ input, playlist: data }),
+      );
       this.phase = "loaded";
     } catch (e) {
       this.error = e instanceof Error ? e.message : "Could not load playlist";
       this.phase = "idle";
     }
+  }
+
+  private restore(): void {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    try {
+      const { input, playlist } = JSON.parse(saved) as {
+        input?: string;
+        playlist?: YouTubePlaylist;
+      };
+      this.lastInput = input ?? "";
+      if (playlist) {
+        this.playlist = playlist;
+        this.rows = this.rowsFor(playlist);
+        this.phase = "loaded";
+      }
+    } catch {}
+  }
+
+  private rowsFor(playlist: YouTubePlaylist): TrackRow[] {
+    return playlist.tracks.map((track) => ({
+      track,
+      status: "pending",
+      match: null,
+      included: true,
+    }));
   }
 
   async convert(): Promise<void> {
